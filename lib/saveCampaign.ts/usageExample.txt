@@ -1,0 +1,9 @@
+// Beispiel für Zugriff in einem Step:
+import { useWizard } from '@/lib/WizardContext';
+
+const { formData, setFormData } = useWizard();
+
+<input
+  type="text"
+  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+/>

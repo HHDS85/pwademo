@@ -1,0 +1,5 @@
+generator client { provider = "prisma-client-js" }
+datasource db { provider = "mysql", url = env("DATABASE_URL") }
+model Campaign { id String @id @default(cuid()) name String description String status String startDate DateTime endDate DateTime campaignUrl String userId String createdAt DateTime @default(now()) updatedAt DateTime @updatedAt publisherAds PublisherAd[] media Media[] }
+model PublisherAd { id String @id @default(cuid()) publisher String section String budget Int impressions Int campaignId String @map("campaign_id") campaign Campaign @relation(fields: [campaignId], references: [id]) }
+model Media { id String @id @default(cuid()) videoUrl String? videoFile String? campaignId String campaign Campaign @relation(fields: [campaignId], references: [id]) }

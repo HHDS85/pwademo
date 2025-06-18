@@ -1,0 +1,7 @@
+model Media {
+  id         String   @id @default(cuid())
+  campaign   Campaign @relation(fields: [campaignId], references: [id])
+  campaignId String
+  videoUrl   String?
+  videoFile  String?
+}
